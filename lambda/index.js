@@ -292,6 +292,7 @@ const CancelAndStopIntentHandler = {
         const strings = getStrings(handlerInput);
         return handlerInput.responseBuilder
             .speak(strings.STOP_MSG)
+            .withShouldEndSession(true)
             .getResponse();
     }
 };
