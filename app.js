@@ -1319,9 +1319,9 @@ function copyCode(elementId) {
 }
 
 function loadSourceCodes() {
-    let modelFile = 'interactionModels/custom/fr-FR.json';
-    if (currentLang === 'en-US') modelFile = 'interactionModels/custom/en-US.json';
-    else if (currentLang === 'es-ES') modelFile = 'interactionModels/custom/es-ES.json';
+    let modelFile = 'skill-package/interactionModels/custom/fr-FR.json';
+    if (currentLang === 'en-US') modelFile = 'skill-package/interactionModels/custom/en-US.json';
+    else if (currentLang === 'es-ES') modelFile = 'skill-package/interactionModels/custom/es-ES.json';
     
     fetch(modelFile)
         .then(res => res.text())
@@ -1333,7 +1333,7 @@ function loadSourceCodes() {
         .then(code => document.getElementById('code-lambda').textContent = code)
         .catch(() => loadFallbackCode('code-lambda'));
 
-    fetch('skill.json')
+    fetch('skill-package/skill.json')
         .then(res => res.text())
         .then(code => document.getElementById('code-manifest').textContent = code)
         .catch(() => loadFallbackCode('code-manifest'));

@@ -3,7 +3,7 @@
   "profiles": {
     "default": {
       "skillMetadata": {
-        "src": "./skill.json"
+        "src": "./skill-package"
       },
       "code": {
         "default": {

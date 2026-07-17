@@ -11,12 +11,13 @@ Ce dépôt cohabite sous la forme d'un **Simulateur Web interactif** (pour teste
 ```text
 Infraclean/
 ├── ask-resources.json          # Fichier de ressources ASK CLI v2 pour l'importateur
-├── skill.json                  # Manifeste de la skill Alexa (Multilingue FR, EN, ES)
-├── interactionModels/
-│   └── custom/
-│       ├── fr-FR.json          # Modèle d'interaction vocal en français
-│       ├── en-US.json          # Modèle d'interaction vocal en anglais
-│       └── es-ES.json          # Modèle d'interaction vocal en espagnol
+├── skill-package/              # Répertoire des métadonnées de la skill
+│   ├── skill.json              # Manifeste de la skill Alexa (Multilingue FR, EN, ES)
+│   └── interactionModels/
+│       └── custom/
+│           ├── fr-FR.json      # Modèle d'interaction vocal en français
+│           ├── en-US.json      # Modèle d'interaction vocal en anglais
+│           └── es-ES.json      # Modèle d'interaction vocal en espagnol
 ├── lambda/
 │   ├── index.js                # Code AWS Lambda (Node.js ASK SDK - Localisé)
 │   └── package.json            # Dépendances Node.js pour Lambda
