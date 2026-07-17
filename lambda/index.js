@@ -338,4 +338,4 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addErrorHandlers(
         ErrorHandler
     )
-    .getResponse();
+    .lambda();
