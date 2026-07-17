@@ -1,0 +1,156 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "infraclean",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "aide",
+            "aide moi",
+            "comment ça marche",
+            "qu'est-ce que je peux faire"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "arrête le nettoyage",
+            "coupe le son",
+            "stop",
+            "arrête",
+            "désactive les vibrations"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "CalibrateIntent",
+          "slots": [
+            {
+              "name": "surface",
+              "type": "SURFACE_TYPE"
+            }
+          ],
+          "samples": [
+            "calibre pour le {surface}",
+            "calibre pour la surface {surface}",
+            "calibre pour la {surface}",
+            "calibre {surface}",
+            "lance le calibrage pour le {surface}",
+            "commence le calibrage",
+            "lance le calibrage",
+            "ajuste pour le {surface}",
+            "calibrer"
+          ]
+        },
+        {
+          "name": "DirtDetectionIntent",
+          "samples": [
+            "lance la détection de saleté",
+            "détecte la saleté",
+            "analyse la poussière",
+            "est-ce que c'est propre",
+            "lance le diagnostic",
+            "détection de saleté",
+            "détection automatique"
+          ]
+        },
+        {
+          "name": "TurboIntent",
+          "samples": [
+            "active le mode turbo",
+            "mode turbo",
+            "nettoyage turbo",
+            "puissance maximale",
+            "met le turbo",
+            "turbo"
+          ]
+        },
+        {
+          "name": "WaterEjectIntent",
+          "samples": [
+            "active l'expulsion d'eau",
+            "évacue l'eau",
+            "expulse l'eau",
+            "vide l'eau",
+            "expulsion d'eau",
+            "éjecte l'eau",
+            "enlever l'eau",
+            "cycle d'éjection d'eau"
+          ]
+        },
+        {
+          "name": "MicCalibrateIntent",
+          "samples": [
+            "améliore l'écoute",
+            "lance le calibrage micro",
+            "nettoie le micro",
+            "optimise l'écoute",
+            "calibrage micro",
+            "calibre le microphone",
+            "aide alexa à mieux entendre",
+            "écoute améliorée"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "SURFACE_TYPE",
+          "values": [
+            {
+              "name": {
+                "value": "bois",
+                "synonyms": [
+                  "bureau",
+                  "table",
+                  "étagère",
+                  "parquet"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "verre",
+                "synonyms": [
+                  "vitre",
+                  "miroir",
+                  "fenêtre"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "métal",
+                "synonyms": [
+                  "acier",
+                  "aluminium",
+                  "plaque",
+                  "étagère métallique"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "tissu",
+                "synonyms": [
+                  "canapé",
+                  "fauteuil",
+                  "coussin",
+                  "tapis",
+                  "textile"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

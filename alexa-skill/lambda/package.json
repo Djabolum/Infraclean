@@ -1,0 +1,15 @@
+{
+  "name": "infraclean-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda function code for the Infraclean Alexa Skill",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.41.0"
+  }
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infraclean - Simulateur de Skill Alexa & Nettoyage Acoustique</title>
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles spécifiques pour le sélecteur de langue dans le header */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .lang-selector-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-selector-container:hover {
+            border-color: var(--color-alexa-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .lang-selector-container i {
+            color: var(--color-alexa-cyan);
+            font-size: 0.9rem;
+        }
+        
+        .lang-selector {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .lang-selector option {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-volume-high"></i>
+            </div>
+            <div>
+                <h1 class="app-title">Infraclean</h1>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Technologie de nettoyage par ondes sonores</p>
+            </div>
+        </div>
+        
+        <div class="header-actions">
+            <!-- Sélecteur de langue -->
+            <div class="lang-selector-container">
+                <i class="fa-solid fa-earth-americas"></i>
+                <select id="langSelector" class="lang-selector">
+                    <option value="fr-FR" selected>Français (FR)</option>
+                    <option value="en-US">English (US)</option>
+                    <option value="es-ES">Español (ES)</option>
+                </select>
+            </div>
+            <div class="tagline" id="taglineDevice">Simulateur Alexa Echo Dot</div>
+        </div>
+    </header>
+
+    <!-- Container principal -->
+    <main class="app-container">
+
+        <!-- Colonne Gauche : Simulateur Acoustique & Echo Dot -->
+        <div class="simulator-pane">
+
+            <!-- Visualiseur d'ondes -->
+            <div class="glass-card visualizer-card">
+                <div class="card-title">
+                    <i class="fa-solid fa-wave-square" style="color: var(--color-alexa-cyan)"></i>
+                    <span id="txtWaveVisualizerTitle">Visualiseur d'Ondes Acoustiques</span>
+                    <span class="badge" id="wave-type-label">SINUSOÏDALE</span>
+                </div>
+                <div class="visualizer-wrapper">
+                    <canvas id="waveformCanvas" class="waveform-canvas"></canvas>
+                    <div id="freqDisplay" class="freq-display">0.0 Hz</div>
+                </div>
+                
+                <div class="audio-controls">
+                    <button id="btnAudioToggle" class="btn-audio-toggle">
+                        <i class="fa-solid fa-play"></i> <span id="txtBtnAudioActivate">Activer l'Audio</span>
+                    </button>
+                    
+                    <div class="control-item">
+                        <label for="sliderVolume" id="lblVolume">Volume</label>
+                        <input type="range" id="sliderVolume" min="0" max="1" step="0.05" value="0.5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scène 3D / Physique Echo Dot -->
+            <div class="echo-dot-stage">
+                <!-- Canevas des particules de poussière -->
+                <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+                
+                <!-- Enceinte Echo Dot -->
+                <div id="echoDevice" class="echo-device">
+                    <!-- Anneau LED Alexa -->
+                    <div id="echoLedRing" class="echo-led-ring state-idle"></div>
+                    
+                    <!-- Plaque supérieure avec boutons -->
+                    <div class="echo-top-plate">
+                        <div class="echo-btn btn-plus" title="Volume +"><i class="fa-solid fa-plus"></i></div>
+                        <div class="echo-btn btn-minus" title="Volume -"><i class="fa-solid fa-minus"></i></div>
+                        <div class="echo-btn btn-action" title="Action"><i class="fa-solid fa-circle"></i></div>
+                        <div class="echo-btn btn-mute" title="Muet"><i class="fa-solid fa-microphone-slash"></i></div>
+                    </div>
+                </div>
+                
+                <p id="txtDustInstruction" style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                    Des particules de poussière sont déposées sur le dessus de l'Echo Dot.<br>
+                    Activez les vibrations pour les observer s'éjecter de la grille.
+                </p>
+            </div>
+
+            <!-- Calibration de Surface -->
+            <div class="glass-card">
+                <div class="card-title">
+                    <i class="fa-solid fa-sliders" style="color: var(--color-calibrate)"></i>
+                    <span id="txtSurfaceCalibrationTitle">Calibrage par Surface</span>
+                </div>
+                <div class="surface-grid">
+                    <div class="surface-card" data-surface="bois" id="cardSurface1">
+                        <div class="surface-icon"><i class="fa-solid fa-table"></i></div>
+                        <div class="surface-name" id="nameSurface1">Bois</div>
+                        <div class="surface-freq">80 Hz</div>
+                    </div>
+                    <div class="surface-card" data-surface="verre" id="cardSurface2">
+                        <div class="surface-icon"><i class="fa-solid fa-window-maximize"></i></div>
+                        <div class="surface-name" id="nameSurface2">Verre</div>
+                        <div class="surface-freq">120 Hz</div>
+                    </div>
+                    <div class="surface-card" data-surface="métal" id="cardSurface3">
+                        <div class="surface-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <div class="surface-name" id="nameSurface3">Métal</div>
+                        <div class="surface-freq">160 Hz</div>
+                    </div>
+                    <div class="surface-card" data-surface="tissu" id="cardSurface4">
+                        <div class="surface-icon"><i class="fa-solid fa-couch"></i></div>
+                        <div class="surface-name" id="nameSurface4">Tissu</div>
+                        <div class="surface-freq">50 Hz</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manette de Fonctionnalités -->
+            <div class="feature-controllers">
+                <!-- Détection de saleté -->
+                <div class="glass-card controller-card">
+                    <div class="card-title" style="border:none; margin:0; padding:0;">
+                        <i class="fa-solid fa-magnifying-glass-chart" style="color: var(--color-clean)"></i>
+                        <span id="txtDirtDetectionTitle">Détection de Saleté</span>
+                    </div>
+                    <div class="dirt-status-container">
+                        <span id="txtDirtRateLabel" style="font-size: 0.8rem; color: var(--text-secondary);">Taux détecté :</span>
+                        <div class="dirt-gauge">
+                            <span id="dirtValue" class="dirt-value">--</span>
+                            <span class="dirt-unit">%</span>
+                        </div>
+                    </div>
+                    <div class="dirt-bar-bg">
+                        <div id="dirtBarFill" class="dirt-bar-fill"></div>
+                    </div>
+                    <button id="btnScan" class="btn-scan">
+                        <i class="fa-solid fa-radar"></i> <span id="txtBtnScan">Analyser Acoustique</span>
+                    </button>
+                </div>
+
+                <!-- Expulsion d'Eau -->
+                <div class="glass-card controller-card" id="cardWaterEject">
+                    <div class="card-title" style="border:none; margin:0; padding:0;">
+                        <i class="fa-solid fa-droplet" style="color: #0055ff"></i>
+                        <span id="txtWaterEjectionTitle">Expulsion d'Eau</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; height: 32px; overflow: hidden;" id="txtWaterEjectDesc">
+                        Évacue l'humidité accumulée par pulsations sonores rapides à 165Hz.
+                    </div>
+                    <div class="water-btn-group">
+                        <button id="btnWaterWet" class="btn-water">
+                            <i class="fa-solid fa-cloud-rain"></i> <span id="txtBtnWaterWet">Inonder</span>
+                        </button>
+                        <button id="btnWaterEject" class="btn-water">
+                            <i class="fa-solid fa-wind"></i> <span id="txtBtnWaterEject">Expulser</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Amélioration d'Écoute -->
+                <div class="glass-card controller-card" id="cardMicCalibrate">
+                    <div class="card-title" style="border:none; margin:0; padding:0;">
+                        <i class="fa-solid fa-microphone-lines" style="color: #8b5cf6"></i>
+                        <span id="txtMicCalibrateTitle">Amélioration d'Écoute</span>
+                    </div>
+                    <div class="dirt-status-container">
+                        <span id="txtMicStatusLabel" style="font-size: 0.8rem; color: var(--text-secondary);">Statut Micro :</span>
+                        <div class="dirt-gauge">
+                            <span id="micStatusValue" class="dirt-value" style="font-size: 1.1rem; color: var(--text-secondary);">Standard</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; height: 32px; overflow: hidden;" id="txtMicCalibrateDesc">
+                        Balayage aigu pour déboucher les ports et calibrage du bruit ambiant.
+                    </div>
+                    <button id="btnMicCalibrate" class="btn-scan" style="background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.2); color: #c084fc;">
+                        <i class="fa-solid fa-microphone-lines"></i> <span id="txtBtnMicCalibrate">Optimiser</span>
+                    </button>
+                </div>
+
+                <!-- Mode Turbo -->
+                <div class="glass-card controller-card" id="cardTurbo">
+                    <div class="card-title" style="border:none; margin:0; padding:0;">
+                        <i class="fa-solid fa-bolt" style="color: var(--color-turbo)"></i>
+                        <span id="txtTurboTitle">Mode Turbo</span>
+                    </div>
+                    <div class="dirt-status-container">
+                        <span id="txtTurboStatusLabel" style="font-size: 0.8rem; color: var(--text-secondary);">État Turbo :</span>
+                        <div class="dirt-gauge">
+                            <span id="turboStatusValue" class="dirt-value" style="font-size: 1.1rem; color: var(--text-secondary);">OFF</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; height: 32px; overflow: hidden;" id="txtTurboDesc">
+                        Vibrations de crête à 200Hz à amplitude maximale pour taches tenaces.
+                    </div>
+                    <button id="btnTurbo" class="btn-scan" style="background: rgba(255, 0, 85, 0.08); border-color: rgba(255, 0, 85, 0.2); color: #ff5e8c;">
+                        <i class="fa-solid fa-bolt"></i> <span id="txtBtnTurbo">Activer Turbo</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Colonne Droite : Simulateur Alexa & Code Developer -->
+        <div class="dashboard-pane">
+
+            <!-- Simulateur Alexa Chat -->
+            <div class="glass-card chat-card">
+                <div class="card-title">
+                    <i class="fa-brands fa-amazon" style="color: var(--color-alexa-blue)"></i>
+                    <span id="txtAlexaChatTitle">Console Vocal Alexa</span>
+                </div>
+                <div id="chatBox" class="chat-box">
+                    <!-- Rempli par app.js au démarrage -->
+                </div>
+                <!-- Suggestions de commandes -->
+                <div id="chatSuggestions" class="chat-suggestions">
+                    <!-- Rempli dynamiquement par app.js -->
+                </div>
+                <!-- Input bar -->
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="" autocomplete="off">
+                    <button id="btnSendChat" class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <!-- Onglets de code développeur -->
+            <div class="glass-card code-card">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="tab-model" id="tabLabelModel">Interaction Model</button>
+                    <button class="tab-btn" data-tab="tab-lambda">Lambda Handler</button>
+                    <button class="tab-btn" data-tab="tab-manifest">skill.json</button>
+                    <button class="tab-btn" data-tab="tab-readme" id="tabLabelReadme">Guide Déploiement</button>
+                </div>
+
+                <!-- Modèle d'interaction -->
+                <div id="tab-model" class="tab-content active">
+                    <button class="btn-copy" onclick="copyCode('code-model')"><i class="fa-solid fa-copy"></i> <span class="txtCopyBtn">Copier</span></button>
+                    <div class="code-wrapper">
+                        <pre><code id="code-model">... chargement du code ...</code></pre>
+                    </div>
+                </div>
+
+                <!-- Code Lambda -->
+                <div id="tab-lambda" class="tab-content">
+                    <button class="btn-copy" onclick="copyCode('code-lambda')"><i class="fa-solid fa-copy"></i> <span class="txtCopyBtn">Copier</span></button>
+                    <div class="code-wrapper">
+                        <pre><code id="code-lambda">... chargement du code ...</code></pre>
+                    </div>
+                </div>
+
+                <!-- Manifeste -->
+                <div id="tab-manifest" class="tab-content">
+                    <button class="btn-copy" onclick="copyCode('code-manifest')"><i class="fa-solid fa-copy"></i> <span class="txtCopyBtn">Copier</span></button>
+                    <div class="code-wrapper">
+                        <pre><code id="code-manifest">... chargement du code ...</code></pre>
+                    </div>
+                </div>
+
+                <!-- Guide de déploiement -->
+                <div id="tab-readme" class="tab-content">
+                    <button class="btn-copy" onclick="copyCode('code-readme')"><i class="fa-solid fa-copy"></i> <span class="txtCopyBtn">Copier</span></button>
+                    <div class="code-wrapper" style="white-space: pre-wrap; font-family: var(--font-sans); font-size: 0.85rem;">
+                        <div id="code-readme">... chargement du guide ...</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Fichier JS logique -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "fr-FR": {
+          "summary": "Système de nettoyage par vibrations sonores à basse fréquence.",
+          "examplePhrases": [
+            "Alexa, ouvre Infraclean",
+            "Alexa, calibre pour le bois avec Infraclean",
+            "Alexa, lance le mode turbo avec Infraclean"
+          ],
+          "pageHeaderDescription": "Infraclean utilise les haut-parleurs de vos appareils Alexa pour générer des vibrations sonores basse fréquence ciblées qui délogent la poussière des surfaces environnantes.",
+          "description": "Infraclean est une technologie révolutionnaire qui utilise des ondes sonores à basse fréquence pour déloger la poussière et les particules de vos surfaces. Elle comprend le calibrage automatique en fonction des surfaces (bois, verre, métal, tissus), un mode de détection de saleté et un mode turbo pour les taches plus tenaces.",
+          "name": "Infraclean"
+        },
+        "en-US": {
+          "summary": "Vibrational cleaning system using low-frequency sound waves.",
+          "examplePhrases": [
+            "Alexa, open Infraclean",
+            "Alexa, calibrate for wood with Infraclean",
+            "Alexa, start turbo mode with Infraclean"
+          ],
+          "pageHeaderDescription": "Infraclean uses your Alexa speaker to generate target low-frequency vibrations that dislodge dust from surrounding surfaces.",
+          "description": "Infraclean is a revolutionary technology that uses low-frequency sound waves to dislodge dust and particles from your surfaces. It includes automatic calibration for different surface types (wood, glass, metal, fabric), a dirt detection mode, and a turbo mode for stubborn stains.",
+          "name": "Infraclean"
+        },
+        "es-ES": {
+          "summary": "Sistema de limpieza vibratoria mediante ondas sonoras de baja frecuencia.",
+          "examplePhrases": [
+            "Alexa, abre Infraclean",
+            "Alexa, calibra para madera con Infraclean",
+            "Alexa, inicia el modo turbo con Infraclean"
+          ],
+          "pageHeaderDescription": "Infraclean utiliza el altavoz de tu Alexa para generar vibraciones de baja frecuencia que desalojan el polvo de las superficies.",
+          "description": "Infraclean es una tecnología revolucionaria que utiliza ondas sonoras de baja frecuencia para desprender el polvo y las partículas de tus superficies. Incluye calibración automática según la superficie (madera, vidrio, metal, tejido), modo de detección de suciedad y modo turbo para manchas difíciles.",
+          "name": "Infraclean"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Dites 'Alexa, ouvre Infraclean' ou 'Alexa, open Infraclean'. Testez le calibrage (bois/wood/madera) ou le mode turbo.",
+      "category": "UTILITIES",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:eu-west-1:YOUR_ACCOUNT_ID:function:infraclean-handler"
+        },
+        "interfaces": [
+          {
+            "type": "AUDIO_PLAYER"
+          }
+        ],
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:YOUR_ACCOUNT_ID:function:infraclean-handler"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:YOUR_ACCOUNT_ID:function:infraclean-handler"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchasing": false,
+      "locales": {
+        "fr-FR": {
+          "privacyPolicyUrl": "https://infraclean.example.com/privacy",
+          "termsOfUseUrl": "https://infraclean.example.com/terms"
+        },
+        "en-US": {
+          "privacyPolicyUrl": "https://infraclean.example.com/privacy",
+          "termsOfUseUrl": "https://infraclean.example.com/terms"
+        },
+        "es-ES": {
+          "privacyPolicyUrl": "https://infraclean.example.com/privacy",
+          "termsOfUseUrl": "https://infraclean.example.com/terms"
+        }
+      },
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}

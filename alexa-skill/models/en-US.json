@@ -1,0 +1,155 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "infraclean",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "help",
+            "how does it work",
+            "what can I do",
+            "guide me"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "stop cleaning",
+            "mute sound",
+            "stop",
+            "halt",
+            "turn off vibrations"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "CalibrateIntent",
+          "slots": [
+            {
+              "name": "surface",
+              "type": "SURFACE_TYPE"
+            }
+          ],
+          "samples": [
+            "calibrate for {surface}",
+            "calibrate for the {surface} surface",
+            "calibrate for the {surface}",
+            "calibrate {surface}",
+            "start calibration for {surface}",
+            "start calibration",
+            "adjust for {surface}",
+            "tune for {surface}",
+            "calibrate"
+          ]
+        },
+        {
+          "name": "DirtDetectionIntent",
+          "samples": [
+            "start dirt detection",
+            "detect dirt",
+            "analyze dust",
+            "is it clean",
+            "run diagnostic",
+            "dirt detection",
+            "automatic detection"
+          ]
+        },
+        {
+          "name": "TurboIntent",
+          "samples": [
+            "activate turbo mode",
+            "turbo mode",
+            "turbo cleaning",
+            "maximum power",
+            "engage turbo",
+            "turbo"
+          ]
+        },
+        {
+          "name": "WaterEjectIntent",
+          "samples": [
+            "eject water",
+            "water ejection",
+            "clear water",
+            "remove water",
+            "push water out",
+            "start water ejection",
+            "activate water eject"
+          ]
+        },
+        {
+          "name": "MicCalibrateIntent",
+          "samples": [
+            "improve listening",
+            "calibrate microphone",
+            "clean microphone",
+            "optimize mic",
+            "mic calibration",
+            "optimize listening",
+            "help alexa hear better",
+            "better listening"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "SURFACE_TYPE",
+          "values": [
+            {
+              "name": {
+                "value": "wood",
+                "synonyms": [
+                  "desk",
+                  "table",
+                  "shelf",
+                  "hardwood"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "glass",
+                "synonyms": [
+                  "window",
+                  "mirror",
+                  "pane"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "metal",
+                "synonyms": [
+                  "steel",
+                  "aluminum",
+                  "plate",
+                  "metallic shelf"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "fabric",
+                "synonyms": [
+                  "couch",
+                  "sofa",
+                  "cushion",
+                  "carpet",
+                  "textile"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

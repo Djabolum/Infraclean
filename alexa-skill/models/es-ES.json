@@ -1,0 +1,156 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "infraclean",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "ayuda",
+            "cómo funciona",
+            "qué puedo hacer",
+            "ayúdame"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "para la limpieza",
+            "apaga el sonido",
+            "stop",
+            "para",
+            "desactiva las vibraciones",
+            "detén las vibraciones"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "CalibrateIntent",
+          "slots": [
+            {
+              "name": "surface",
+              "type": "SURFACE_TYPE"
+            }
+          ],
+          "samples": [
+            "calibra para {surface}",
+            "calibra para la superficie {surface}",
+            "calibra la {surface}",
+            "calibra {surface}",
+            "inicia la calibración para {surface}",
+            "inicia la calibración",
+            "ajusta para {surface}",
+            "calibrar"
+          ]
+        },
+        {
+          "name": "DirtDetectionIntent",
+          "samples": [
+            "inicia la detección de suciedad",
+            "detecta la suciedad",
+            "analiza el polvo",
+            "está limpio",
+            "inicia el diagnóstico",
+            "detección de suciedad",
+            "detección automática"
+          ]
+        },
+        {
+          "name": "TurboIntent",
+          "samples": [
+            "activa el modo turbo",
+            "modo turbo",
+            "limpieza turbo",
+            "potencia máxima",
+            "pon el turbo",
+            "turbo"
+          ]
+        },
+        {
+          "name": "WaterEjectIntent",
+          "samples": [
+            "expulsa el agua",
+            "expulsión de agua",
+            "saca el agua",
+            "evacuar agua",
+            "activa la expulsión de agua",
+            "limpieza de agua",
+            "sacar el agua",
+            "expulsar agua"
+          ]
+        },
+        {
+          "name": "MicCalibrateIntent",
+          "samples": [
+            "mejora la escucha",
+            "calibrar micrófono",
+            "limpiar micrófono",
+            "optimizar micro",
+            "calibración micrófono",
+            "mejora la audición",
+            "calibrar micro",
+            "optimizar micrófono"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "SURFACE_TYPE",
+          "values": [
+            {
+              "name": {
+                "value": "madera",
+                "synonyms": [
+                  "escritorio",
+                  "mesa",
+                  "estantería",
+                  "parqué"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "vidrio",
+                "synonyms": [
+                  "cristal",
+                  "ventana",
+                  "espejo"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "metal",
+                "synonyms": [
+                  "acero",
+                  "aluminio",
+                  "chapa",
+                  "placa metálica"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "tejido",
+                "synonyms": [
+                  "sofá",
+                  "sillón",
+                  "cojín",
+                  "alfombra",
+                  "tela"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
