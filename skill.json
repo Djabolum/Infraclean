@@ -9,8 +9,7 @@
             "Alexa, calibre pour le bois avec Infraclean",
             "Alexa, lance le mode turbo avec Infraclean"
           ],
-          "pageHeaderDescription": "Infraclean utilise les haut-parleurs de vos appareils Alexa pour générer des vibrations sonores basse fréquence ciblées qui délogent la poussière des surfaces environnantes.",
-          "description": "Infraclean est une technologie révolutionnaire qui utilise des ondes sonores à basse fréquence pour déloger la poussière et les particules de vos surfaces. Elle comprend le calibrage automatique en fonction des surfaces (bois, verre, métal, tissus), un mode de détection de saleté, un mode d'amélioration d'écoute micro et un mode turbo.",
+          "description": "Infraclean utilise les haut-parleurs de vos appareils Alexa pour générer des vibrations sonores basse fréquence ciblées qui délogent la poussière des surfaces environnantes. Elle comprend le calibrage automatique en fonction des surfaces (bois, verre, métal, tissus), un mode de détection de saleté, un mode d'amélioration d'écoute micro et un mode turbo.",
           "name": "Infraclean"
         },
         "en-US": {
@@ -20,8 +19,7 @@
             "Alexa, calibrate for wood with Infraclean",
             "Alexa, start turbo mode with Infraclean"
           ],
-          "pageHeaderDescription": "Infraclean uses your Alexa speaker to generate target low-frequency vibrations that dislodge dust from surrounding surfaces.",
-          "description": "Infraclean is a revolutionary technology that uses low-frequency sound waves to dislodge dust and particles from your surfaces. It includes automatic calibration for different surface types (wood, glass, metal, fabric), a dirt detection mode, microphone listening optimization, and a turbo mode.",
+          "description": "Infraclean uses your Alexa speaker to generate target low-frequency vibrations that dislodge dust from surrounding surfaces. It includes automatic calibration for different surface types (wood, glass, metal, fabric), a dirt detection mode, microphone listening optimization, and a turbo mode.",
           "name": "Infraclean"
         },
         "es-ES": {
@@ -31,8 +29,7 @@
             "Alexa, calibra para madera con Infraclean",
             "Alexa, inicia el modo turbo con Infraclean"
           ],
-          "pageHeaderDescription": "Infraclean utiliza el altavoz de tu Alexa para generar vibraciones de baja frecuencia que desalojan el polvo de las superficies.",
-          "description": "Infraclean es una tecnología revolucionaria que utiliza ondas sonoras de baja frecuencia para desprender el polvo y las partículas de tus superficies. Incluye calibración automática según la superficie (madera, vidrio, metal, tejido), modo de detección de suciedad, mejora de escucha micro y modo turbo.",
+          "description": "Infraclean utiliza el altavoz de tu Alexa para generar vibraciones de baja frecuencia que desalojan el polvo de las superficies. Incluye calibración automática según la superficie (madera, vidrio, metal, tejido), modo de detección de suciedad, mejora de escucha micro y modo turbo.",
           "name": "Infraclean"
         }
       },
@@ -52,7 +49,7 @@
     },
     "manifestVersion": "1.0",
     "privacyAndCompliance": {
-      "allowsPurchasing": false,
+      "allowsPurchases": false,
       "locales": {
         "fr-FR": {
           "privacyPolicyUrl": "https://infraclean.example.com/privacy",
