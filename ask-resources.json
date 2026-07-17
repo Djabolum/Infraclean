@@ -1,0 +1,15 @@
+{
+  "askcliResourcesVersion": "2.0",
+  "profiles": {
+    "default": {
+      "skillMetadata": {
+        "src": "./skill.json"
+      },
+      "code": {
+        "default": {
+          "src": "./lambda"
+        }
+      }
+    }
+  }
+}

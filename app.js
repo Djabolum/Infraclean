@@ -1319,21 +1319,21 @@ function copyCode(elementId) {
 }
 
 function loadSourceCodes() {
-    let modelFile = 'alexa-skill/models/fr-FR.json';
-    if (currentLang === 'en-US') modelFile = 'alexa-skill/models/en-US.json';
-    else if (currentLang === 'es-ES') modelFile = 'alexa-skill/models/es-ES.json';
+    let modelFile = 'interactionModels/custom/fr-FR.json';
+    if (currentLang === 'en-US') modelFile = 'interactionModels/custom/en-US.json';
+    else if (currentLang === 'es-ES') modelFile = 'interactionModels/custom/es-ES.json';
     
     fetch(modelFile)
         .then(res => res.text())
         .then(code => document.getElementById('code-model').textContent = code)
         .catch(() => loadFallbackCode('code-model'));
 
-    fetch('alexa-skill/lambda/index.js')
+    fetch('lambda/index.js')
         .then(res => res.text())
         .then(code => document.getElementById('code-lambda').textContent = code)
         .catch(() => loadFallbackCode('code-lambda'));
 
-    fetch('alexa-skill/skill.json')
+    fetch('skill.json')
         .then(res => res.text())
         .then(code => document.getElementById('code-manifest').textContent = code)
         .catch(() => loadFallbackCode('code-manifest'));
